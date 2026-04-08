@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Kamu ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Josefin+Sans:wght@200;300;400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-primary: #2D5A27;
+            --green-secondary: #4A7C45;
+            --green-accent: #7CB342;
+            --pink-primary: #E91E63;
+            --pink-soft: #F48FB1;
+            --pink-blush: #FCE4EC;
+            --bg-warm: #FFF8F0;
+            --text-dark: #2C1810;
+            --white: #FFFFFF;
+            --glass: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --lavender: #E6E6FA;
+            --cream: #FFFDD0;
+            --peach: #FFDAB9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            background: var(--bg-warm);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Intro Animation */
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--pink-blush) 0%, var(--bg-warm) 50%, var(--green-accent) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOutIntro 1s ease 3s forwards;
+        }
+
+        @keyframes fadeOutIntro {
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        .intro-content {
+            text-align: center;
+            animation: scaleIn 1s ease;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .intro-heart {
+            font-size: 5rem;
+            animation: heartBeat 1s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+        }
+
+        .intro-title {
+            font-family: 'Allura', cursive;
+            font-size: 3.5rem;
+            color: var(--pink-primary);
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .intro-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 1s both;
+        }
+
+        .intro-loading {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .loading-heart {
+            font-size: 1.5rem;
+            animation: loadingPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes loadingPulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.3); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Floating Hearts Canvas */
+        #hearts-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Decorative Elements */
+        .deco-star {
+            position: absolute;
+            font-size: 2rem;
+            animation: twinkle 2s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.2) rotate(15deg); }
+        }
+
+        .deco-flower {
+            position: absolute;
+            animation: sway 3s ease-in-out infinite;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #FFD700 0%, transparent 70%);
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .floating-element {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Bear Image Sticker */
+        .bear-sticker {
+            position: absolute;
+            width: 80px;
+            height: auto;
+            z-index: 10;
+            animation: float 4s ease-in-out infinite;
+            filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.15));
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .bear-sticker:hover {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .bear-sticker.small {
+            width: 50px;
+        }
+
+        .bear-sticker.large {
+            width: 100px;
+        }
+
+        /* Cute Sticker Elements - Pinterest Style */
+        .cute-sticker {
+            position: absolute;
+            font-size: 2.5rem;
+            animation: cuteBounce 3s ease-in-out infinite;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));
+            z-index: 5;
+        }
+
+        @keyframes cuteBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
+        }
+
+        .cute-sticker:hover {
+            transform: scale(1.2) rotate(5deg);
+            transition: transform 0.3s ease;
+        }
+
+        /* Decorative Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px 0;
+            opacity: 0.7;
+        }
+
+        .divider-line {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--pink-soft), transparent);
+        }
+
+        .divider-icon {
+            font-size: 1.5rem;
+            animation: cuteBounce 2s ease-in-out infinite;
+        }
+
+        /* Polaroid Frame */
+        .polaroid {
+            background: var(--white);
+            padding: 15px 15px 40px 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .polaroid img {
+            width: 100%;
+            border-radius: 3px;
+        }
+
+        .polaroid-caption {
+            font-family: 'Allura', cursive;
+            color: var(--text-dark);
+            text-align: center;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        /* Washi Tape Effect */
+        .washi-tape {
+            position: absolute;
+            width: 60px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--pink-soft) 0%, var(--pink-blush) 100%);
+            opacity: 0.8;
+            transform: rotate(-5deg);
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Ribbon Decoration */
+        .ribbon {
+            position: absolute;
+            font-size: 2rem;
+            animation: ribbonFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes ribbonFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(3deg); }
+            75% { transform: translateY(5px) rotate(-3deg); }
+        }
+
+        /* Tag Label */
+        .tag-label {
+            display: inline-block;
+            background: var(--pink-blush);
+            color: var(--pink-primary);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 3px 10px rgba(233, 30, 99, 0.2);
+        }
+
+        /* Cute Badge */
+        .cute-badge {
+            position: absolute;
+            background: var(--white);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: badgeFloat 5s ease-in-out infinite;
+        }
+
+        @keyframes badgeFloat {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-8px) rotate(5deg); }
+        }
+
+        /* Paper Clip */
+        .paper-clip {
+            position: absolute;
+            font-size: 1.5rem;
+            color: var(--pink-soft);
+            z-index: 10;
+            transform: rotate(15deg);
+        }
+
+        /* Message Bubble */
+        .message-bubble {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 20px 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .message-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 30px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: var(--white) transparent;
+        }
+
+        /* Floating Badge */
+        .floating-badge {
+            position: absolute;
+            animation: floatBadge 4s ease-in-out infinite;
+        }
+
+        @keyframes floatBadge {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(10deg); }
+            66% { transform: translateY(0) rotate(-5deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(20px) rotate(-5deg); }
+        }
+
+        /* Gradient Orbs Background */
+        .gradient-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--pink-primary);
+            top: 10%;
+            left: -10%;
+            animation: orbMove1 15s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--green-accent);
+            top: 50%;
+            right: -5%;
+            animation: orbMove2 12s ease-in-out infinite;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: var(--pink-soft);
+            bottom: 10%;
+            left: 20%;
+            animation: orbMove3 18s ease-in-out infinite;
+        }
+
+        @keyframes orbMove1 {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(50px, 30px); }
+            66% { transform: translate(-30px, 50px); }
+        }
+
+        @keyframes orbMove2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-40px, -30px); }
+        }
+
+        @keyframes orbMove3 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(30px, -20px); }
+            75% { transform: translate(-20px, 30px); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 50px;
+            background: rgba(255, 248, 240, 0.9);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', cursive;
+            font-size: 1.8rem;
+            color: var(--pink-primary);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--pink-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--pink-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--bg-warm) 0%, var(--pink-blush) 50%, rgba(124, 179, 66, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(233, 30, 99, 0.05) 0%, transparent 50%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-family: 'Allura', cursive;
+            font-size: 4.5rem;
+            color: var(--green-primary);
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 span {
+            color: var(--pink-primary);
+            font-family: 'Allura', cursive;
+            font-size: 4.8rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            opacity: 0.8;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero-emoji {
+            font-size: 5rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 30px;
+            height: 50px;
+            border: 3px solid var(--pink-soft);
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .scroll-indicator span::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--pink-primary);
+            border-radius: 50%;
+            animation: scrollDot 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollDot {
+            0%, 100% { opacity: 1; top: 10px; }
+            50% { opacity: 0.5; top: 25px; }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 50px;
+        }
+
+        .section-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--green-primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '❤️';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+        }
+
+        /* Gallery Section - Pinterest Style */
+        .gallery {
+            background: linear-gradient(180deg, var(--bg-warm) 0%, var(--white) 100%);
+        }
+
+        .masonry-grid {
+            columns: 4;
+            column-gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1200px) {
+            .masonry-grid { columns: 3; }
+        }
+
+        @media (max-width: 900px) {
+            .masonry-grid { columns: 2; }
+        }
+
+        @media (max-width: 600px) {
+            .masonry-grid { columns: 1; }
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--white);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .masonry-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(233, 30, 99, 0.2);
+        }
+
+        .masonry-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .masonry-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .masonry-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 20px 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .masonry-item:hover .masonry-overlay {
+            opacity: 1;
+        }
+
+        .masonry-overlay h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .masonry-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .heart-icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: white;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .heart-icon:hover,
+        .heart-icon.liked {
+            color: var(--pink-primary);
+            transform: scale(1.3);
+        }
+
+        /* Love Letters Section */
+        .love-letters {
+            background: url('img/pinterest-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .love-letters .section-title {
+            color: var(--white);
+        }
+
+        .letters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .letter-card {
+            background: linear-gradient(135deg, #FCE4EC 0%, #F3E5F5 100%);
+            border-radius: 20px;
+            padding: 30px;
+            min-height: 250px;
+            cursor: pointer;
+            perspective: 1000px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .letter-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .letter-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .letter-card.flipped .letter-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .letter-front,
+        .letter-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .letter-front {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF8F0 100%);
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .letter-front .date {
+            font-family: 'Cormorant Garamond', cursive;
+            font-size: 1.5rem;
+            color: var(--pink-primary);
+            margin-bottom: 10px;
+        }
+
+        .letter-front h3 {
+            font-family: 'Libre Baskerville', serif;
+            color: var(--green-primary);
+            font-size: 1.5rem;
+        }
+
+        .letter-front .flip-hint {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            opacity: 0.5;
+        }
+
+        .letter-back {
+            background: linear-gradient(135deg, #F8BBD9 0%, #E1BEE7 100%);
+            color: #4A4A4A;
+            border-radius: 20px;
+            transform: rotateY(180deg);
+        }
+
+        .letter-back p {
+            font-family: 'Cormorant Garamond', cursive;
+            font-size: 1.3rem;
+            line-height: 1.8;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            background: var(--bg-warm);
+        }
+
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--green-accent), var(--pink-primary));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: right;
+            padding-right: 60px;
+            padding-left: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            padding-left: 60px;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+        }
+
+        .timeline-content img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .timeline-date {
+            font-family: 'Cormorant Garamond', cursive;
+            color: var(--pink-primary);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content h3 {
+            color: var(--green-primary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: var(--pink-primary);
+            border-radius: 50%;
+            border: 4px solid var(--bg-warm);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-container::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                flex-direction: column;
+            }
+
+            .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-content {
+                width: 100%;
+                text-align: left;
+                padding: 20px 20px 20px 50px;
+                margin-left: 30px;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+
+        /* Interactive Quiz Section */
+        .quiz-section {
+            background: linear-gradient(135deg, var(--pink-blush) 0%, var(--bg-warm) 100%);
+            text-align: center;
+        }
+
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(233, 30, 99, 0.2);
+        }
+
+        .quiz-question {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5rem;
+            color: var(--green-primary);
+            margin-bottom: 30px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .quiz-option {
+            padding: 15px 30px;
+            border: 2px solid var(--green-secondary);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .quiz-option:hover {
+            background: var(--green-secondary);
+            color: white;
+            border-color: var(--green-secondary);
+        }
+
+        .quiz-option.correct {
+            background: var(--green-accent);
+            border-color: var(--green-accent);
+            color: white;
+        }
+
+        .quiz-option.wrong {
+            background: var(--pink-primary);
+            border-color: var(--pink-primary);
+            color: white;
+        }
+
+        .quiz-result {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .quiz-result.show {
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--green-primary);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        footer h2 {
+            font-family: 'Cormorant Garamond', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .made-with {
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        /* Music Player Button */
+        .music-player button:hover {
+            transform: scale(1.1);
+        }
+
+        .music-player button:active {
+            transform: scale(0.95);
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 20px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            transform: rotate(90deg);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        /* Card hover */
+        .masonry-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .masonry-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(233, 30, 99, 0.2);
+        }
+
+        /* Nav underline */
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--pink-primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        /* Letter flip */
+        .letter-card-inner {
+            transition: transform 0.6s ease;
+        }
+
+        /* Heart icon */
+        .heart-icon {
+            transition: transform 0.2s ease;
+        }
+
+        .heart-icon:active {
+            transform: scale(1.3);
+        }
+
+        /* Timeline hover */
+        .timeline-content {
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+        }
+
+        /* Quiz */
+        .quiz-option {
+            transition: all 0.2s ease;
+        }
+
+        .quiz-option:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--white);
+                padding: 30px;
+                gap: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Intro Animation -->
+    <div class="intro-overlay" id="intro">
+        <div class="intro-content">
+            <div class="intro-heart">💕</div>
+            <h1 class="intro-title">Hai, Almadina Azkia!</h1>
+            <p class="intro-subtitle">i have something for you <3</p>
+            <div class="intro-loading">
+                <span class="loading-heart">❤️</span>
+                <span class="loading-heart" style="animation-delay: 0.2s;">💖</span>
+                <span class="loading-heart" style="animation-delay: 0.4s;">💕</span>
+            </div>
+        </div>
+    </div>
+    <!-- Background Gradient Orbs -->
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+    
+    <canvas id="hearts-canvas"></canvas>
+
+    <nav>
+        <div class="logo" id="logo-text">Untuk Kamu ❤️</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <ul class="nav-links">
+            <li><a href="#hero">Beranda</a></li>
+            <li><a href="#gallery">moment</a></li>
+            <li><a href="#letters">Love Letters</a></li>
+            <li><a href="#timeline">Momen Kita</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="hero">
+        <!-- Decorative Elements -->
+        <span class="deco-star" style="top: 15%; left: 10%;">✦</span>
+        <span class="deco-star" style="top: 25%; right: 15%; animation-delay: 0.5s;">✦</span>
+        <span class="deco-star" style="bottom: 30%; left: 8%; animation-delay: 1s;">✦</span>
+        <span class="deco-star" style="bottom: 20%; right: 12%; animation-delay: 1.5s;">✦</span>
+        <span class="deco-flower" style="top: 20%; right: 8%; font-size: 2rem;">🌸</span>
+        <span class="deco-flower" style="bottom: 25%; left: 5%; font-size: 1.5rem; animation-delay: 0.5s;">🌷</span>
+        
+        <div class="sparkle" style="top: 20%; left: 25%;"></div>
+        <div class="sparkle" style="top: 35%; right: 20%; animation-delay: 0.3s;"></div>
+        <div class="sparkle" style="bottom: 40%; left: 30%; animation-delay: 0.6s;"></div>
+        <div class="sparkle" style="bottom: 30%; right: 25%; animation-delay: 0.9s;"></div>
+        
+        <div class="floating-element" style="top: 30%; right: 20%; font-size: 1.5rem;">🦋</div>
+        <div class="floating-element" style="bottom: 35%; left: 15%; font-size: 1.2rem; animation-delay: 1s;">🌙</div>
+        
+        <!-- Bear Images -->
+        <img src="./img/beruang-pink.png" alt="Bear" class="bear-sticker" style="top: 12%; left: 8%; width: 120px;">
+        <img src="./img/beruang-pink.png" alt="Bear" class="bear-sticker" style="bottom: 18%; right: 10%; width: 110px; animation-delay: 0.5s;">
+        
+        <div class="hero-content">
+            <div class="hero-emoji">💕</div>
+            <h1>Hai, <span id="nama-pacar">Almadina Azkia</span>! 💖</h1>
+            <p>Ini adalah website spesial dari kikiii buat amaa! ✨</p>
+            <p>diliat yaaa yaa kebawah 👇</p>
+        </div>
+        <div class="scroll-indicator" onclick="scrollToGallery()">
+            <span></span>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <!-- Flourish Elements -->
+        <img src="./img/beruang-pink.png" alt="Bear" class="bear-sticker" style="top: 3%; left: 5%; width: 60px;">
+        <img src="./img/beruang-pink.png" alt="Bear" class="bear-sticker" style="top: 5%; right: 5%; width: 50px; animation-delay: 0.5s;">
+        <span class="deco-star" style="top: 10%; left: 5%;">✦</span>
+        <span class="deco-star" style="top: 15%; right: 8%; animation-delay: 0.7s;">✦</span>
+        <span class="deco-star" style="top: 12%; left: 18%; animation-delay: 1s;">✦</span>
+        <span class="deco-flower" style="top: 8%; right: 15%; font-size: 1.5rem;">🌸</span>
+        <span class="deco-flower" style="top: 12%; left: 8%; font-size: 1.2rem; animation-delay: 0.5s;">🌷</span>
+        <span style="position: absolute; top: 8%; left: 25%; font-size: 1.3rem; animation: float 3s ease-in-out infinite;">🎀</span>
+        
+        <h2 class="section-title">moment 📸</h2>
+        <div class="masonry-grid">
+            <div class="masonry-item fade-in">
+                <img src="./img/momen-kita.jpg" alt="Momen Kita">
+                <span class="heart-icon" onclick="toggleLike(this)">🤍</span>
+                <div class="masonry-overlay">
+                    <h3>Memorable Word</h3>
+                    <p>kata pertama yang berkesan (ka kiki)</p>
+                </div>
+            </div>
+            <div class="masonry-item fade-in">
+                <img src="./img/date-day.jpg" alt="Date Day">
+                <span class="heart-icon" onclick="toggleLike(this)">🤍</span>
+                <div class="masonry-overlay">
+                    <h3>Date Day</h3>
+                    <p>our quality time</p>
+                </div>
+            </div>
+            <div class="masonry-item fade-in">
+                <img src="./img/cute.jpg" alt="Cute">
+                <span class="heart-icon" onclick="toggleLike(this)">🤍</span>
+                <div class="masonry-overlay">
+                    <h3>Kamu</h3>
+                    <p>Senyummu yang paling menawan</p>
+                </div>
+            </div>
+            <div class="masonry-item fade-in">
+                <img src="./img/kita.jpg" alt="Kita">
+                <span class="heart-icon" onclick="toggleLike(this)">🤍</span>
+                <div class="masonry-overlay">
+                    <h3>Sweet Memories</h3>
+                    <p>jangan dilupain yaa! <3</p>
+                </div>
+            </div>
+            <div class="masonry-item fade-in">
+                <img src="./img/imut.jpg" alt="Imut">
+                <span class="heart-icon" onclick="toggleLike(this)">🤍</span>
+                <div class="masonry-overlay">
+                    <h3>my love</h3>
+                    <p>you'll always be in my heart <3</p>
+                </div>
+            </div>
+            <div class="masonry-item fade-in">
+                <img src="./img/best-pasangan.jpg" alt="Best Pasangan">
+                <span class="heart-icon" onclick="toggleLike(this)">🤍</span>
+                <div class="masonry-overlay">
+                    <h3>pasangan terbaik</h3>
+                    <p>the best girlfriend on earth</p>
+                </div>
+            </div>
+            <div class="masonry-item fade-in">
+                <img src="./img/paling-cantik.jpg" alt="Paling Cantik">
+                <span class="heart-icon" onclick="toggleLike(this)">🤍</span>
+                <div class="masonry-overlay">
+                    <h3>Beauty</h3>
+                    <p>Kamu yang paling cantik</p>
+                </div>
+            </div>
+        </div>
+        <img src="./img/kamera.png" alt="Kamera" style="position: absolute; right: -100px; top: 92%; width: 400px; transform: rotate(15deg); filter: drop-shadow(3px 5px 8px rgba(0,0,0,0.2));">
+    </section>
+
+    <section class="love-letters" id="letters">
+        <img src="./img/beruang-pink.png" alt="Bear" class="bear-sticker" style="top: 5%; right: 6%; width: 90px;">
+        <span class="deco-star" style="top: 5%; left: 10%;">✦</span>
+        <span class="deco-star" style="top: 10%; right: 12%; animation-delay: 0.5s;">✦</span>
+        <span class="deco-flower" style="top: 8%; left: 5%; font-size: 1.8rem;">🌷</span>
+        <span class="deco-flower" style="top: 5%; right: 5%; font-size: 1.5rem;">🌹</span>
+        <div class="sparkle" style="top: 15%; left: 20%;"></div>
+        <div class="sparkle" style="top: 20%; right: 25%; animation-delay: 0.5s;"></div>
+        <h2 class="section-title">Love Letters 💌</h2>
+        <div class="letters-grid">
+            <div class="letter-card" onclick="flipCard(this)">
+                <div class="letter-card-inner">
+                    <div class="letter-front">
+                        <div class="date">Setiap Hari</div>
+                        <h3>Pagi yang Indah</h3>
+                        <p class="flip-hint">Klik untuk baca ❤️</p>
+                    </div>
+                    <div class="letter-back">
+                        <p>terima kasih banyak sudaa menyambut ku tiap pagi dengan senyuman sama suara indah kamu! im so grateful to have you <3</p>
+                    </div>
+                </div>
+            </div>
+            <div class="letter-card" onclick="flipCard(this)">
+                <div class="letter-card-inner">
+                    <div class="letter-front">
+                        <div class="date">Salah Satu</div>
+                        <h3>Nilai Kamu</h3>
+                        <p class="flip-hint">Klik untuk baca ❤️</p>
+                    </div>
+                    <div class="letter-back">
+                        <p>amaaa tuu individu paling berharga bagi aku, your eyes, your smile, and everything about you mean everything to me <3</p>
+                    </div>
+                </div>
+            </div>
+            <div class="letter-card" onclick="flipCard(this)">
+                <div class="letter-card-inner">
+                    <div class="letter-front">
+                        <div class="date">Selalu</div>
+                        <h3>Janji</h3>
+                        <p class="flip-hint">Klik untuk baca ❤️</p>
+                    </div>
+                    <div class="letter-back">
+                        <p>Aku janji akan selalu ada buat kamu. Di saat happy, sedih, atau apapun - kita hadapi bareng. Till the end! 💖</p>
+                    </div>
+                </div>
+            </div>
+            <div class="letter-card" onclick="flipCard(this)">
+                <div class="letter-card-inner">
+                    <div class="letter-front">
+                        <div class="date">Sekarang</div>
+                        <h3>Perasaan</h3>
+                        <p class="flip-hint">Klik untuk baca ❤️</p>
+                    </div>
+                    <div class="letter-back">
+                        <p>amaa, rasa sayang dan cinta aku terus bertumbuh seiring berjalannya waktu! i'll fall in love with you more and more, every single day <3</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline" id="timeline">
+        <!-- Flourish Elements -->
+        <img src="./img/beruang-pink.png" alt="Bear" class="bear-sticker" style="top: 3%; left: 5%; width: 50px;">
+        <img src="./img/beruang-pink.png" alt="Bear" class="bear-sticker" style="top: 5%; right: 8%; width: 40px; animation-delay: 0.5s;">
+        <span class="deco-star" style="top: 8%; left: 8%;">✦</span>
+        <span class="deco-star" style="top: 12%; right: 10%; animation-delay: 0.8s;">✦</span>
+        <span class="deco-star" style="top: 15%; left: 15%; animation-delay: 1.2s;">✦</span>
+        <span class="deco-flower" style="top: 5%; right: 20%; font-size: 1.3rem;">🌸</span>
+        <span class="deco-flower" style="top: 10%; left: 5%; font-size: 1.5rem; animation-delay: 0.5s;">🌺</span>
+        <span class="deco-flower" style="bottom: 8%; right: 5%; font-size: 1.2rem; animation-delay: 1s;">🌷</span>
+        <span style="position: absolute; top: 12%; left: 20%; font-size: 1.5rem; animation: float 3s ease-in-out infinite;">🎀</span>
+        <span style="position: absolute; bottom: 10%; left: 10%; font-size: 1.3rem; animation: float 4s ease-in-out infinite; animation-delay: 0.5s;">💕</span>
+        
+        <h2 class="section-title">Our Journeys 📅</h2>
+        <div class="timeline-container">
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <img src="./img/first-meet.jpg" alt="Pertama Bertemu">
+                    <div class="timeline-date">Pertama Bertemu</div>
+                    <h3>Awal Segalanya</h3>
+                    <p>momen kitaa bertemu, akuu masih inget banget! se spesial itu woy! <3</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <img src="./img/first-date.jpg" alt="First Date">
+                    <div class="timeline-date">First Date</div>
+                    <h3>hari yang sangat sangat indah</h3>
+                    <p>date pertama kita, what a precious time! ulang yuk!! <3</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <img src="./img/anniversary.jpg" alt="Anniversary">
+                    <div class="timeline-date">Anniversary</div>
+                    <h3>1 Tahun Bersama</h3>
+                    <p>makasiiii sudaa nempel sama akuu selama 1 tahun iniii!!!! <3</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <img src="./img/now.jpg" alt="Sekarang">
+                    <div class="timeline-date">Sekarang</div>
+                    <h3>Makin Kuat</h3>
+                    <p>terus ber iringan yuk sampai laut memisahkan! <3</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quiz-section" id="quiz">
+        <span class="deco-star" style="top: 5%; left: 15%;">✦</span>
+        <span class="deco-star" style="top: 8%; right: 18%; animation-delay: 0.6s;">✦</span>
+        <span class="deco-flower" style="top: 3%; right: 8%; font-size: 1.5rem;">🌷</span>
+        <span class="deco-flower" style="top: 6%; left: 5%; font-size: 1.3rem; animation-delay: 0.3s;">🌸</span>
+        <div class="sparkle" style="top: 12%; left: 25%;"></div>
+        <div class="sparkle" style="top: 15%; right: 30%; animation-delay: 0.7s;"></div>
+        <h2 class="section-title">Quiz 💭</h2>
+        <div class="quiz-container">
+            <div class="quiz-question" id="quiz-question">apa hal paling berharga buat aku? 💎</div>
+            <div class="quiz-options">
+                <div class="quiz-option" data-answer="wrong">kamu</div>
+                <div class="quiz-option" data-answer="correct">cinnamon roll</div>
+                <div class="quiz-option" data-answer="wrong">buku</div>
+                <div class="quiz-option" data-answer="wrong">sains</div>
+            </div>
+            <div class="quiz-result" id="quiz-result">yahaaaa pasti kamu ngira itu kamu yaa, wleee <3</div>
+        </div>
+    </section>
+
+    <footer>
+        <h2>Dengan Cinta 💕</h2>
+        <p>Made with love specially for you</p>
+        
+        <!-- Music Player -->
+        <div class="music-player" style="margin: 20px auto; padding: 15px 25px; background: rgba(255,255,255,0.2); border-radius: 30px; display: inline-block; backdrop-filter: blur(10px);">
+            <button onclick="toggleMusic()" id="musicBtn" style="background: none; border: none; font-size: 2rem; cursor: pointer; transition: transform 0.3s;">🎵</button>
+            <span style="color: white; margin-left: 10px; font-size: 0.9rem;">kiki's playlist 🎶</span>
+        </div>
+        
+        <p class="made-with">© 2026 - Website Cinta dari kiki</p>
+    </footer>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img src="" alt="Lightbox Image" id="lightbox-img">
+    </div>
+
+    <script>
+        // === MUSIC PLAYER ===
+        const musicTracks = [
+            'music/symphony.mp3'
+        ];
+        let currentTrack = 0;
+        let isPlaying = false;
+        let audio = new Audio();
+        
+        audio.volume = 0.5;
+        
+        function toggleMusic() {
+            const btn = document.getElementById('musicBtn');
+            if (isPlaying) {
+                audio.pause();
+                btn.textContent = '🎵';
+                isPlaying = false;
+            } else {
+                audio.src = musicTracks[currentTrack];
+                audio.play().catch(e => console.log('Autoplay blocked, user must interact first'));
+                btn.textContent = '⏸️';
+                isPlaying = true;
+                
+                audio.addEventListener('ended', () => {
+                    audio.currentTime = 0;
+                    audio.play();
+                });
+            }
+        }
+
+        // === INTRO ANIMATION ===
+        setTimeout(() => {
+            const intro = document.getElementById('intro');
+            intro.style.opacity = '0';
+            intro.style.visibility = 'hidden';
+            document.body.style.overflow = 'auto';
+        }, 3500);
+
+        // === KONFIGURASI ===
+        // Ganti nama pacar kamu di bawah ini
+        const namaPacar = "Almadina Azkia"; // Contoh: Sarah, Dina, dll
+        
+        // === SETUP AWAL ===
+        document.getElementById('nama-pacar').textContent = namaPacar;
+        document.getElementById('logo-text').textContent = namaPacar;
+
+        // === NAVIGATION SCROLL ===
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        function scrollToGallery() {
+            document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // === FLOATING HEARTS CANVAS ===
+        const canvas = document.getElementById('hearts-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Heart {
+            constructor() {
+                this.reset();
+            }
+            
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + 20;
+                this.size = Math.random() * 15 + 8;
+                this.speed = Math.random() * 2 + 1;
+                this.opacity = Math.random() * 0.5 + 0.5;
+                this.color = ['#E91E63', '#F48FB1', '#FF6B9D', '#7CB342', '#4A7C45', '#FFB6C1'][Math.floor(Math.random() * 6)];
+                this.wobble = Math.random() * Math.PI * 2;
+                this.wobbleSpeed = Math.random() * 0.05 + 0.02;
+            }
+            
+            update() {
+                this.y -= this.speed;
+                this.wobble += this.wobbleSpeed;
+                this.x += Math.sin(this.wobble) * 0.5;
+                
+                if (this.y < -30) {
+                    this.reset();
+                }
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                ctx.translate(this.x, this.y);
+                
+                // Draw heart shape
+                ctx.beginPath();
+                const size = this.size;
+                ctx.moveTo(0, size * 0.3);
+                ctx.bezierCurveTo(-size, -size * 0.5, -size * 1.5, size * 0.2, 0, size);
+                ctx.bezierCurveTo(size * 1.5, size * 0.2, size, -size * 0.5, 0, size * 0.3);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        const hearts = [];
+        for (let i = 0; i < 30; i++) {
+            const heart = new Heart();
+            heart.y = Math.random() * canvas.height;
+            hearts.push(heart);
+        }
+
+        class Star {
+            constructor() {
+                this.reset();
+            }
+            
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speed = Math.random() * 0.5 + 0.2;
+                this.opacity = Math.random() * 0.8 + 0.2;
+                this.twinkle = Math.random() * Math.PI * 2;
+                this.twinkleSpeed = Math.random() * 0.1 + 0.05;
+            }
+            
+            update() {
+                this.y -= this.speed;
+                this.twinkle += this.twinkleSpeed;
+                
+                if (this.y < -10) {
+                    this.reset();
+                }
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity * (0.5 + 0.5 * Math.sin(this.twinkle));
+                ctx.fillStyle = '#FFD700';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        class SparkleParticle {
+            constructor() {
+                this.reset();
+            }
+            
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 4 + 2;
+                this.speedY = Math.random() * 1 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.life = 1;
+                this.decay = Math.random() * 0.01 + 0.005;
+                this.color = Math.random() > 0.5 ? '#E91E63' : '#FFD700';
+            }
+            
+            update() {
+                this.y -= this.speedY;
+                this.x += this.speedX;
+                this.life -= this.decay;
+                
+                if (this.life <= 0) {
+                    this.reset();
+                }
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.life * 0.8;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y - this.size);
+                ctx.lineTo(this.x + this.size * 0.3, this.y);
+                ctx.lineTo(this.x, this.y + this.size);
+                ctx.lineTo(this.x - this.size * 0.3, this.y);
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        const stars = [];
+        for (let i = 0; i < 15; i++) {
+            stars.push(new Star());
+        }
+
+        const sparkles = [];
+        for (let i = 0; i < 20; i++) {
+            sparkles.push(new SparkleParticle());
+        }
+
+        function animateHearts() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw stars
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+            
+            // Draw sparkles
+            sparkles.forEach(sparkle => {
+                sparkle.update();
+                sparkle.draw();
+            });
+            
+            // Draw hearts
+            hearts.forEach(heart => {
+                heart.update();
+                heart.draw();
+            });
+            requestAnimationFrame(animateHearts);
+        }
+        animateHearts();
+
+        // Click to create new heart with burst effect
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.lightbox') || e.target.closest('.letter-card')) return;
+            
+            // Create multiple hearts in burst
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const newHeart = new Heart();
+                    newHeart.x = e.clientX + (Math.random() - 0.5) * 50;
+                    newHeart.y = e.clientY + (Math.random() - 0.5) * 50;
+                    newHeart.opacity = 1;
+                    newHeart.speed = Math.random() * 3 + 2;
+                    hearts.push(newHeart);
+                    
+                    setTimeout(() => {
+                        hearts.pop();
+                    }, 4000);
+                }, i * 50);
+            }
+            
+            // Create burst of sparkles
+            for (let i = 0; i < 8; i++) {
+                const sparkle = new SparkleParticle();
+                sparkle.x = e.clientX;
+                sparkle.y = e.clientY;
+                sparkle.speedX = (Math.random() - 0.5) * 3;
+                sparkle.speedY = Math.random() * 2 + 1;
+                sparkle.life = 1;
+                sparkles.push(sparkle);
+            }
+        });
+
+        // === LIGHTBOX ===
+        document.querySelectorAll('.masonry-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImg = document.getElementById('lightbox-img');
+                lightboxImg.src = img.src.replace('w=600', 'w=1200');
+                lightbox.classList.add('active');
+            });
+        });
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // === FLIP CARD ===
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+
+        // === LIKE HEART ===
+        function toggleLike(heart) {
+            heart.classList.toggle('liked');
+            if (heart.classList.contains('liked')) {
+                heart.textContent = '❤️';
+            } else {
+                heart.textContent = '🤍';
+            }
+        }
+
+        // === QUIZ LOGIC ===
+        const quizOptions = document.querySelectorAll('.quiz-option');
+        const quizResult = document.getElementById('quiz-result');
+        
+        quizOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                if (option.dataset.answer === 'correct') {
+                    option.classList.add('correct');
+                    quizResult.classList.add('show');
+                } else {
+                    option.classList.add('wrong');
+                }
+            });
+        });
+
+        // === SCROLL ANIMATIONS ===
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // === KEYBOARD SHORTCUT ===
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
